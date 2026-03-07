@@ -1,8 +1,8 @@
 package br.com.fiapride.model;
 public class Aspirador { 
-    public String cor;
-    public String material;
-    public int bateria;
+    private String cor;
+    private String material;
+    private int bateria;
     
     public Aspirador(String cor, String material) {
     	this.cor = cor;
@@ -11,8 +11,12 @@ public class Aspirador {
     	
     	}
 
-    public void AspirarCasa (double bateria) {
-    	//O aspirador não funciona caso a bateria estiver 10%<
+    private Aspirador() {
+		// TODO Auto-generated constructor stub
+	}
+
+	private void AspirarCasa (double bateria) {
+    	//O aspirador não funciona caso a bateria esteja 10% ou menor
     	if (bateria <= 10) {
     		System.out.println("A bateria está fraca demais para aspirar.");
     		return;
@@ -25,7 +29,7 @@ public class Aspirador {
     	System.out.println("A bateria do aspirador é de: "+ this.bateria);
     }
     
-    public void CarregarBateria(double carregamento) {
+    private void CarregarBateria(double carregamento) {
     	if (carregamento >= 100) {
     		System.out.println("Carga 100% carregada.");
     		return;
@@ -36,7 +40,28 @@ public class Aspirador {
     		return;
     	}
     }
-    
+
+	private void AspirarCasa() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+    public double getBateria() {
+        return this.bateria; 
+    }
+
+    // Método para DEFINIR o saldo (Escrita com Regra de Negócio!)
+    private void setBateria(double porcentagem) {
+        if (porcentagem >= 0) {
+            this.bateria = porcentagem;
+        } else {
+            System.out.println("Tentativa de definir bateria negativa bloqueada!");
+        }
+    }
+
+    public String getCor() {
+        return this.cor;
+    }
 }
 	
 
